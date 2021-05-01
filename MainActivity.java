@@ -57,17 +57,17 @@ public class MainActivity extends AppCompatActivity {
         textView.setText(product);
     }
 
-    public void show_id_rav(SQLiteDatabase db, int k){
-        product+="\nВывод строки 2 из таблицы связи точек\n";
-        Cursor cursor = mDb.rawQuery("SELECT * FROM coordrav", null);
-        cursor.moveToPosition(k);
-        product += cursor.getInt(0) + " | " + cursor.getInt(1) + " | " + cursor.getInt(2) + " | " + cursor.getInt(3) + "\n";
+    public void show_id_dan(SQLiteDatabase db, int k){
+        product+="\nВывод строки 67\n";
+        Cursor cursor = mDb.rawQuery("SELECT * FROM coorddan", null);
+        cursor.moveToPosition(k-1);
+        product += cursor.getString(0) + " | " + cursor.getString(1) + " | " + cursor.getString(2) + " | " + cursor.getString(3) +"\n";
         cursor.close();
         textView.setText(product);
     }
 
     public void show_number(SQLiteDatabase db, String number){
-        product+="\nВывод строки по номеру аудитории\n";
+        product+="\nВывод строки по номеру аудитории (423)\n";
           Cursor cursor = db.query("coorddan",
                   new String[] {"id", "x", "y", "number"},
                    "number = ?",
@@ -134,18 +134,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 show_rav(mDb);
-                //show_dan(mDb);
-                show_id_rav(mDb,1);
-                show_number(mDb,"3");
+                show_dan(mDb);
+                show_id_dan(mDb,67);
+                show_number(mDb,"423");
 
-                String product1="";
+                /*String product1="";
                 int ID=0;
                 ID = into_id(mDb, "423a", ID);
                 product+="\n ID = " + ID +"\n";
 
                 String Num="";
                 Num = out_id(mDb,ID);
-                product+="Num = " + Num +"\n";
+                product+="Num = " + Num +"\n";*/
 
                 //EditText Start=findViewByID(R.id.aud);
                 //int Begin=Start.getText().toString();
